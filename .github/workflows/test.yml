@@ -34,8 +34,10 @@ jobs:
               echo "$dir module was changed"
               version_in_branch=$(grep 'version' "${dir}/__manifest__.py" | awk '{print($2)}')
               echo "Version ${version_in_branch} in module ${dir}"
-              version_in_main=$(grep 'version' "main/${dir}/__manifest__.py" | awk '{print($2)}')
+              version_in_main=$(grep 'version' "main/${dir}/__manifest__.py" | awk '{print($2)}' || echo "")
               echo "Version ${version_in_main} in main"
+            else
+              echo "Could not get module version for ${dir}"
             fi
           done
 
