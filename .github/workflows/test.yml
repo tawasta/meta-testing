@@ -27,9 +27,9 @@ jobs:
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
-          for file in ${ALL_CHANGED_FILES}; do
-            echo "$file was changed"
-            version_in_branch=$(grep 'version' | awk '{print($0)}')
+          for dir in ${ALL_CHANGED_FILES}; do
+            echo "$dir was changed"
+            version_in_branch=$(grep 'version' "${dir}/__manifest__.py" | awk '{print($0)}')
             echo "${version_in_branch} in branch"
           done
 
