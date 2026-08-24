@@ -29,11 +29,12 @@ jobs:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
           for dir in ${ALL_CHANGED_FILES}; do
-            echo "$dir was changed"
             if [ -f "${dir}/__manifest__.py" ]; then
+              echo "$dir module was changed"
               version_in_branch=$(grep 'version' "${dir}/__manifest__.py" | awk '{print($2)}')
+              echo "${version_in_branch} in module ${dir}"
+              echo "${context.serverUrl}/${context.repo.owner}/${context.repo.repo}"
             fi
-            echo "${version_in_branch} in branch"
           done
 
 
