@@ -29,8 +29,8 @@ jobs:
         run: |
           for file in ${ALL_CHANGED_FILES}; do
             echo "$file was changed"
-            version_in_branch=$(grep 'version' | awk '{print($1)}')
-            echo "$version_in_branch in branch"
+            version_in_branch=$(grep 'version' | awk '{print($0)}')
+            echo "${version_in_branch} in branch"
           done
 
 
