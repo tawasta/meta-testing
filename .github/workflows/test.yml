@@ -29,7 +29,7 @@ jobs:
         run: |
           for dir in ${ALL_CHANGED_FILES}; do
             echo "$dir was changed"
-            version_in_branch=$(grep 'version' "${dir}/__manifest__.py" | awk '{print($0)}')
+            version_in_branch=$(grep 'version' "${dir}/__manifest__.py" | awk '{print($2)}')
             echo "${version_in_branch} in branch"
           done
 
