@@ -29,12 +29,13 @@ jobs:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
           git clone https://github.com/${{github.repository}} --branch=19.0 --depth=1 main
-          ls main
           for dir in ${ALL_CHANGED_FILES}; do
             if [ -f "${dir}/__manifest__.py" ]; then
               echo "$dir module was changed"
               version_in_branch=$(grep 'version' "${dir}/__manifest__.py" | awk '{print($2)}')
-              echo "${version_in_branch} in module ${dir}"
+              echo "Version ${version_in_branch} in module ${dir}"
+              version_in_main=$(grep 'version' "main/${dir}/__manifest__.py" | awk '{print($2)}')
+              echo "Version ${version_in_main} in main"
             fi
           done
 
