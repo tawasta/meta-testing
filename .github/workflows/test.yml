@@ -2,8 +2,9 @@ name: Module version change check
 
 on:
   pull_request:
-    - opened
-    - synchronize
+    types:
+      - opened
+      - synchronize
     branches:
       - 19.0
 
