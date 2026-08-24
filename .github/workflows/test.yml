@@ -15,16 +15,15 @@ jobs:
     runs-on: ubuntu-latest
     name: Ensure module version changed
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v4
       - name: Ensure module version changed
         id: changed-files
-        uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96
-      - name: List all changed modules
-        uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96
         with:
           dir_name: 'true'
           dir_names_exclude_current_dir: 'true'
           dir_names_max_depth: '1'
+        uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96
+      - name: List all changed modules
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
