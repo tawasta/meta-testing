@@ -37,7 +37,7 @@ jobs:
               version_in_main=$(grep 'version' "main/${dir}/__manifest__.py" | awk '{print($2)}' || echo "")
               echo "Version ${version_in_main} in main"
             else
-              echo "Could not get module version for ${dir}"
+              echo "Ignoring directory ${dir} as it does not contain __manifest__.py"
             fi
           done
 
