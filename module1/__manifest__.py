@@ -22,6 +22,7 @@
     "name": "Futural Base",
     "summary": "Setup basic Odoo instance configuration",
     "version": "19.0.1.1.2",
+
     "category": "Administration",
     "website": "https://github.com/tawasta/futural",
     "author": "Futural",
